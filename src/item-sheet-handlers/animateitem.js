@@ -26,7 +26,21 @@ export class AnimateItem {
         this.hmAnim = this.data.hmAnim;
         this.uaStrikeType = this.data.uaStrikeType;
         this.teleDist = this.data.teleDist;
+        this.customTMFX = this.data.customTMFX;
+        this.tmfxEnable = this.data.tmfxEnable;
+        this.tmfxOption = this.data.tmfxOption;
+        this.tmfxDelay = this.data.tmfxDelay;
+        this.tfmxDelete = this.data.tfmxDelete;
         //this.flagObject = Object.assign({}, this.data);
+        this.tokenMagicEffects = {};
+        if (game.modules.get("tokenmagic")?.active) {
+            game.settings.get("tokenmagic", "presets").forEach(preset => {
+                this.tokenMagicEffects[preset.name] = preset.name;
+            });
+        }
+        else
+            this.tokenMagicEffects["invalid"] = "module not installed";
+        console.log(this.tokenMagicEffects);
     }
 
     defaultData() {
@@ -49,6 +63,12 @@ export class AnimateItem {
             hmAnim: ``,
             uaStrikeType: ``,
             teleDist: ``,
+            customTMFX: {
+                tmfxEnable: false,
+                tmfxOption: ``,
+                tmfxDelay: ``,
+                tfmxDelete: ``
+            }
             //itemName = ``,
             //animTypeVar = ``,
         }
@@ -418,6 +438,19 @@ export class AnimateItem {
     get teleRange() {
         return this.teleDist || "30";
     }
+    
+    get TMFXoptions() {
+        return this.tokenMagicEffects;
+    }
+
+    get tmfxStart() {
+        return this.tmfxDelay;
+    }
+
+    get tmfxDelete() {
+        return this.tfmxDelete;
+    }
+
     /*
     changeFlag(scope, key, value){
         setFlag(scope, key, value)

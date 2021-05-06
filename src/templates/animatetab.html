@@ -193,10 +193,45 @@
         <div class="teleporting">
             <div class="form-group">
                 <label>{{localize "AUTOANIM.range"}}</label>
-                <input type="number" id="flags.autoanimations.teleDist" name="flags.autoanimations.teleDist"
-                    min="5" max="500" value={{teleRange}}>
+                <input type="number" id="flags.autoanimations.teleDist" name="flags.autoanimations.teleDist" min="5"
+                    max="500" value={{teleRange}}>
+            </div>
+        </div>
+        <div class="EnableTMFX">
+            <div class="form-group">
+                <label>Enable TMFX</label>
+                <input type="checkbox" name="flags.autoanimations.tmfxEnable" {{checked tmfxEnable}}>
+            </div>
+        </div>
+        <div class="TMFX-Enabled">
+            <div class="TMFX-presets">
+                <div class="form-group">
+                    <label>Choose a TMFX Preset</label>
+                    <div class="form-fields">
+                        <select name="flags.autoanimations.tmfxOption" class="TMFX-presets">
+                            {{#select tmfxOption}}
+                            {{#each TMFXoptions as |key name|}}
+                            <option value="{{key}}">{{name}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="TMFX-Start">
+                <div class="form group">
+                    <label>TMFX Start Delay (milliseconds)</label>
+                    <input type="number" id="flags.autoanimations.tmfxDelay" name="flags.autoanimations.tmfxDelay"
+                        min="0" value={{tmfxStart}}>
+                </div>
+            </div>
+            <div class="TMFX-Delete">
+                <div class="form group">
+                    <label>TMFX Delete Delay (milliseconds)</label>
+                    <input type="number" id="flags.autoanimations.tfmxDelete" name="flags.autoanimations.tfmxDelete"
+                        min="0" value={{tmfxDelete}}>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

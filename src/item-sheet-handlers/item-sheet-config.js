@@ -163,12 +163,19 @@ export class AnimationTab {
         let ctaRequired = this.html.find('.cta-required');
         let uaStrikeType = this.html.find('.ua-strike-type');
         let teleport = this.html.find('.teleporting');
+        let tmfx = this.html.find('.TMFX-Enabled');
 
+        let tmfxEnabled = this.animateItem.tmfxEnable;
         let animName = this.animateItem.animName.toLowerCase();
         let override = this.animateItem.override;
         let animType = this.animateItem.animType;
         let explosion = this.animateItem.explosion;
 
+        if (tmfxEnabled) {
+            tmfx.show()
+        } else {
+            tmfx.hide()
+        }
         if (animType === "t12" && override) {
             teleport.show();
         } else {

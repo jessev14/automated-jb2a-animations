@@ -32,6 +32,7 @@ export default class MidiHandler {
         this._hmAnim = this._flags.hmAnim ?? "";
         this._uaStrikeType = this._flags.uaStrikeType ?? "";
         this._teleDist = this._flags.teleDist ?? "";
+        this._tmfxOption = this._flags.tmfxOption ?? "";
 
         this._checkSave = Array.from(workflow.saves);
         this._savesId = Array.from(this._checkSave.filter(actor => actor.id).map(actor => actor.id));
@@ -219,6 +220,10 @@ export default class MidiHandler {
 
     get teleRange() {
         return this._teleDist;
+    }
+
+    get tmfxPreset() {
+        return this._tmfxOption;
     }
 
     getDistanceTo(target) {

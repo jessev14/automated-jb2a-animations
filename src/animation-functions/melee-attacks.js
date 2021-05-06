@@ -51,7 +51,6 @@ async function meleeWeapons(handler) {
     let obj01 = moduleIncludes("jb2a_patreon") === true ? JB2APATREONDB : JB2AFREEDB;
 
     let color;
-
     switch (true) {
         case handler.color === "a1" || ``:
         case !handler.color:
@@ -67,6 +66,7 @@ async function meleeWeapons(handler) {
         default:
             color = handler.color;
     }
+    let tmfxPreset = handler.tmfxPreset;
     //console.log(color);
 
     // delay before activating the Token Magic FX Macros, change inside the switch cases to adjust the timing
@@ -90,7 +90,7 @@ async function meleeWeapons(handler) {
             obj02 = "greatsword";
             tmDelay = 1600;
             tmKill = 1600;
-            tmMacro = hitStutter;
+            tmMacro = tmfxPreset;
             break;
         case (handler.itemNameIncludes("greatclub")):
         case handler.itemNameIncludes(game.i18n.format("AUTOANIM.itemGreatclub").toLowerCase()):
@@ -406,6 +406,8 @@ async function meleeWeapons(handler) {
                                 break;
                             default:
                                 TokenMagic.addFilters(target, tmMacro);
+                                await wait(1500);
+                                TokenMagic.deleteFilters(target, tmfxPreset);
                                 break;
                         }
                     }
