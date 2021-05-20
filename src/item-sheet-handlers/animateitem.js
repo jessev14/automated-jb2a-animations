@@ -56,15 +56,7 @@ export class AnimateItem {
             sounds: {},
             //itemName = ``,
             //animTypeVar = ``,
-            allSounds: [{
-                soundFile: '',
-                soundDelay: 0,
-                soundVolume: 50,
-            }, {
-                soundFile: '',
-                soundDelay: 0,
-                soundVolume: 50,
-            }],
+            allSounds: [{}],
         }
     }
     /*
@@ -443,6 +435,20 @@ export class AnimateItem {
 
     get teleRange() {
         return this.teleDist || "30";
+    }
+
+    get fileSound() {
+        let length = this.allSounds.length;
+        console.log(length);
+        return this.allSounds.sounds[0].soundFile || test;
+    }
+
+    get delaySound() {
+        return this.allSounds.sounds[0].soundDelay || 50;
+    }
+
+    get volumeSound() {
+        return this.allSounds.sounds[0].soundVolume || 100;
     }
     
     /*

@@ -364,14 +364,18 @@ export class AnimationTab {
             const allSounds = this.animateItem.allSounds || [];
             allSounds.push(sound);
             this.animateItem.allSounds = allSounds;
+            this.activate = true;
+            this.render();
             // I have no idea how to save it from here -- currently it's not making it back into the template
         });
         $(remove_button).click((e) => {
             e.preventDefault();
             const index = e.delegateTarget.getAttribute('soundIndex');
-            const allSounds = [...this.animateItem.allSounds];
+            const allSounds = [...this.animateItem.allSounds.sounds];
             allSounds.splice(index, 1);
             this.animateItem.allSounds = allSounds;
+            this.activate = true;
+            this.render()
             // again, I have no idea how to save it from here
         });
         /*
@@ -405,6 +409,15 @@ export class AnimationTab {
             //this.animateItem.toggleEnabled(evt.target.unchecked);
             this.activate = true;
         });
+
+        this.html.find('.input_fields_wrap input[type="text"]').change(evt => {
+            this.activate = true;
+        });
+
+        this.html.find('.input_fields_wrap input[type="number"]').change(evt => {
+            this.activate = true;
+        });
+
 
         /*
         this.html.find('input[name="flags.autoanimations.killAnim"]').click(evt => {
