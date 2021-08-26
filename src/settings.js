@@ -1,4 +1,4 @@
-import { AAcustomRecog } from "./custom-recognition/auto-recognition.js"
+import { AAcustomRecog } from "./custom-recognition/alpinejs/alpine-autorecog.js"
 import { aaAutoRecognition } from "./custom-recognition/aaAutoRecList.js";
 export default function aaSettings() {
 

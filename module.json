@@ -7,9 +7,14 @@
     "url": "https://github.com/otigon/automated-jb2a-animations",
     "minimumCoreVersion": "0.8.1",
     "compatibleCoreVersion": "0.8.9",
-    "styles": ["src/css/tabstyles.css"],
+    "styles": [
+        "src/css/tabstyles.css"
+    ],
     "esmodules": [
         "src/autoAnimations.js"
+    ],
+    "scripts": [
+        "/scripts/lib/alpine.min.js"
     ],
     "languages": [
         {
@@ -46,12 +51,12 @@
             "lang": "de",
             "name": "Deutsch",
             "path": "lang/de.json"
-        }  
+        }
     ],
-    "dependencies" : [
+    "dependencies": [
         {
-          "name": "sequencer",
-          "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json"
+            "name": "sequencer",
+            "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json"
         }
     ],
     "socket": true,

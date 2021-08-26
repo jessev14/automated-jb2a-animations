@@ -1,0 +1,13 @@
+<form id="alpine-js-formapplication">
+
+    <template x-for="item in items">
+        <div x-text="item"></div>
+    </template>
+
+    <input type="text" x-model="new_item">
+
+    <button type="button" @click="addItem">Add Item</button>
+
+    <button>Submit</button>
+
+</form>

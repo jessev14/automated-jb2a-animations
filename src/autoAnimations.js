@@ -22,6 +22,10 @@ import { teleportation } from "./animation-functions/teleportation.js";
 import { templateAnimation } from "./animation-functions/templateAnimation.js";
 import { setupSocket, socketlibSocket } from "./socketset.js";
 
+import AlpineFormApplication from "./custom-recognition/alpinejs/alpineClass.js";
+import ExampleFormApplication from "./custom-recognition/alpinejs/alpine-autorecog.js";
+
+
 //import menuOptions from "./animation-functions/databases/jb2a-patreon-menus.js";
 // just swap which of these two lines is commented to turn on/off all logging
 //const log = console.log.bind(window.console);
@@ -35,6 +39,12 @@ function disableAnimations() {
     socket.off('module.sequencer')
     killAllAnimations = true;
 }
+
+
+Hooks.once('init', async function() {
+	window.AlpineFormApplication = AlpineFormApplication;
+	window.ExampleFormApplication = ExampleFormApplication;
+});
 Hooks.on('init', () => {
     Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
