@@ -19,9 +19,18 @@ export class AAcustomRecog extends AlpineFormApplication {
         });
     }
 
+    getSettingsData() {
+        let settingsData = {
+            "aaAutoRecognition": game.settings.get("autoanimations", "aaAutoRecognition"),
+        }
+        return settingsData;
+    }
+
     initializeAlpineData() {
         return {
-            new_item: "",
+            //new_item: "",
+            items: this.getSettingsData(),
+            /*
             items: [
                 "several",
                 "individual",
@@ -29,15 +38,28 @@ export class AAcustomRecog extends AlpineFormApplication {
                 "like",
                 "this"
             ],
+            */
             addItem() {
                 this.items.push(this.new_item)
                 this.new_item = "";
-            }
+            },
         };
     }
 
-    _updateObject() {
+    async _updateObject(_, formData) {
         console.log(this.alpineData.items);
+        /*
+        console.log(formData)
+        const data = expandObject(formData);
+        for (let [key, value] of Object.entries(data)) {
+            console.log(key)
+            console.log(value)
+                const compacted = {};
+                Object.values(value.overrides).forEach((val, idx) => compacted[idx] = val);
+                value.overrides = compacted;
+            await game.settings.set('autoanimations', key, value);
+        }
+        */
     }
 
 }

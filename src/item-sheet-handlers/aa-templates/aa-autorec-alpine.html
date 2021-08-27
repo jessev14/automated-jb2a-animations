@@ -1,10 +1,10 @@
 <form id="alpine-js-formapplication">
 
-    <template x-for="item in items">
-        <div x-text="item"></div>
+    <template x-for="name in Object.keys(items.aaAutoRecognition.overrides)" :key="name">
+        <div x-text="name"></div>
     </template>
 
-    <input type="text" x-model="new_item">
+    <input type="text" x-model="items.aaAutoRecognition.overrides.name">
 
     <button type="button" @click="addItem">Add Item</button>
 
