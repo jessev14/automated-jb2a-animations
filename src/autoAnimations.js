@@ -128,8 +128,12 @@ Hooks.once('ready', function () {
             case "dnd5e":
             case "sw5e":
                 Hooks.on("createChatMessage", async (msg) => {
-                    setUp5eCore
-                        (msg);
+                    setUp5eCore (msg);
+                });
+                break;
+            case "symbaroum":
+                Hooks.on("createChatMessage", async (msg) => {
+                    setUpSymbaroum (msg);
                 });
                 break;
             case "tormenta20":
@@ -680,6 +684,17 @@ async function wfrpSkill(data, targets, info) {
         default:
             trafficCop(handler);
     }
+}
+
+async function setUpSymbaroum(msg) {
+    if (killAllAnimations) { return; }
+    if (msg.user.id !== game.user.id) { return };
+    const handler =  await flagHandler.make(msg);
+
+    if (!handler.item || !handler.actorToken) {
+        return;
+    }
+    trafficCop(handler)
 }
 
 

@@ -55,7 +55,7 @@ export class AASystemData {
             const token = canvas.tokens.get(tokenId) || canvas.tokens.placeables.find(token => token.actor?.items?.get(input.uuid)) || canvas.tokens.placeables.find(token => token.actor?.items?.get(itemId) != null);
 
             let item = token.actor?.items?.get(itemId) || await fromUuid(`Item.${itemId}`);
-            console.log(item)
+
             if (!item) return {};
             if (item.data?.flags?.autoanimations?.options?.ammo && item.data?.data?.consume?.type === "ammo") {
                 itemId = item.data.data.consume.target;
@@ -255,9 +255,32 @@ export class AASystemData {
         return { item, token, targets };
     }
 
+    static async symbaroum(input) {
+        console.log(input)
+
+        const inputAtr = this._extractItemId(input.data?.content);
+        console.log(inputAtr)
+        const itemId = inputAtr;
+        //console.log(itemId);
+        const tokenId = input.data?.speaker?.token;
+        if (!itemId) { return {}; }
+
+        const token = canvas.tokens.get(tokenId) || canvas.tokens.placeables.find(token => token.actor?.items?.get(itemId) != null);
+        if (!token) { return {}; }
+
+        let item = token.actor?.items?.get(itemId) || await fromUuid(`Item.${itemId}`);
+        console.log(item)
+        if (!item) return {};
+
+        const targets = Array.from(input.user.targets);
+
+        return { item, token, targets };
+    }
+
     static _extractItemId(content) {
         try {
-            return $(content).attr("data-item-id");
+            //return $(content).attr("data-item-id");
+            return $(content).attr("data-item-id")
         } catch (exception) {
             console.log("Autoanimations | Couldn´t extract data-item-id for message :", content);
             return null;
