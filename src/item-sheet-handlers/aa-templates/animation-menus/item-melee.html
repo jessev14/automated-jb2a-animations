@@ -12,7 +12,7 @@
             <select name="flags.autoanimations.options.meleeType" {{#if flags.autoanimations.options.enableCustom}}
                 disabled {{/if }}>
                 {{#select flags.autoanimations.options.meleeType}}
-                {{#each meleeList as |name key|}}
+                {{#each typeMenu.melee as |name key|}}
                 <option value="{{key}}">{{name}}</option>
                 {{/each}}
                 {{/select}}

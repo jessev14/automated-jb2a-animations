@@ -2,7 +2,7 @@ import { aaMenuLists } from "./menu-lists.js";
 import { AATabFunctions } from "../aa-classes/tab-options.js";
 import { AutorecFunctions } from "../aa-classes/autorecFunctions.js";
 //import { AAITEMCHECK } from "../animation-functions/item-arrays.js"
-import { aaColorMenu, aaVariantMenu } from "../animation-functions/databases/jb2a-menu-options.js";
+import { aaColorMenu, aaVariantMenu, aaTypeMenu } from "../animation-functions/databases/jb2a-menu-options.js";
 import { flagMigrations } from "../system-handlers/flagMerge.js";
 
 export class AAItemSettings extends FormApplication {
@@ -98,6 +98,7 @@ export class AAItemSettings extends FormApplication {
             meleeWeapons: aaMenuLists.meleeWeapons,
             genericDmg: aaMenuLists.genericDmg,
             auraList: aaMenuLists.aura,
+            typeMenu: aaTypeMenu,
 
             explosionMenu: aaMenuLists.explosionMenu,
             autoRecognized: autoCheck,
