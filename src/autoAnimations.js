@@ -204,6 +204,7 @@ Hooks.once('ready', async function () {
                 break;
             case "dnd5e":
             case "sw5e":
+            case "icrpg":
                 Hooks.on("createChatMessage", async (msg) => {
                     setUp5eCore
                         (msg);
@@ -595,6 +596,8 @@ async function setUp5eCore(msg) {
             handler = await systemData.make(msg);
             rollType = msg.data?.flags?.sw5e?.roll?.type?.toLowerCase() ?? "pass";
             break;
+        case "icrpg":
+            handler = await systemData.make(msg);
     }
 
     if (!handler.item || !handler.sourceToken) {

@@ -262,6 +262,7 @@ export default function aaSettings() {
             break;
         case "dnd5e":
         case "sw5e":
+        case "icrpg":
             game.settings.register("autoanimations", "disableAEAnimations", {
                 name: game.i18n.format("AUTOANIM.disableAEAnimations"),
                 hint: game.i18n.format("AUTOANIM.disableAEAnimationsHint"),

@@ -450,6 +450,18 @@ export class AASystemData {
         return { item, token, targets };
     }
 
+    static async icrpg(input) {
+        const token = canvas.tokens.get(input.data.speaker.token);
+        if (!token) return {};
+
+        const item = token.actor.items.get(input.data.flags.icrpg?.itemID);
+        if (!item) return {};
+
+        const targets = Array.from(input.user.targets);
+
+        return { item, token, targets };
+    }
+
     static _extractItemId(content) {
         try {
             return $(content).attr("data-item-id");
